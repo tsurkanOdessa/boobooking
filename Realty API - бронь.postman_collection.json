@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "a54717b3-af18-46c2-b7e7-4924b91203c2",
+		"name": "Realty API - бронь",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "642563"
+	},
+	"item": [
+		{
+			"name": "01 список резерва admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4ODg0OTc2LCJpYXQiOjE3NDg3OTg1NzYsImp0aSI6IjA4YjUzZmZmNWQ3OTRhNDNhYmZiYjdjNDljYWYwMTM4IiwidXNlcl9pZCI6Mn0.W8cUmIPwoVmyo7Yqrr7M70oxVpOopkWiEYWkKJ0VJj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "01 список резерва owner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTA2Njc5LCJpYXQiOjE3NDg4MjAyNzksImp0aSI6ImFjYmY4MjgzNzZlZjQ1NGE4NDQyNDQwMWFiNmUzMTRlIiwidXNlcl9pZCI6NX0.IafB_q7G7QfJy9fTc5umZRIzGR3XXzwOxx91MwKFqxQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 Создать бронь",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4ODg0OTc2LCJpYXQiOjE3NDg3OTg1NzYsImp0aSI6IjA4YjUzZmZmNWQ3OTRhNDNhYmZiYjdjNDljYWYwMTM4IiwidXNlcl9pZCI6Mn0.W8cUmIPwoVmyo7Yqrr7M70oxVpOopkWiEYWkKJ0VJj0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"price\": 2000,\n\"date_from\": \"2025-07-04\",\n\"date_to\": \"2025-07-05\",\n\"guests\": 4,\n\"home\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 Создать бронь rentner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4ODg5NzQyLCJpYXQiOjE3NDg4MDMzNDIsImp0aSI6ImJkNTlkNDQxYTU1YjQ5Mjk4ZjZhYTJkZTJhOTYxYjJiIiwidXNlcl9pZCI6Nn0.LOfScctplATALmIS7y4nQTnOPepG8LDlrAVkmKtAYAk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"price\": 2000,\n\"date_from\": \"2025-07-04\",\n\"date_to\": \"2025-07-05\",\n\"guests\": 2,\n\"home\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 Получить бронь по ID owner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAxODY0LCJpYXQiOjE3NDg4MTU0NjQsImp0aSI6IjA3NWM5ZjExMGVhNjQ2YTI4YTM5MGUyMDM0NDBmOThjIiwidXNlcl9pZCI6NX0.DhXS_hsDsGtoZszbCxp285-RyesU2lRxhMi5HPsyETk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 Получить бронь по ID manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAyNDQ3LCJpYXQiOjE3NDg4MTYwNDcsImp0aSI6IjRkMDgxMzA1MGVhYzQzN2I5NzgyNmZjNjIxYTdkZDI1IiwidXNlcl9pZCI6N30.PNiB7nOJlXMfCeFy3u1Wb5dGL5HSmFukQx05Keu34mc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 Обновить бронь Подтверждение owner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAxODY0LCJpYXQiOjE3NDg4MTU0NjQsImp0aSI6IjA3NWM5ZjExMGVhNjQ2YTI4YTM5MGUyMDM0NDBmOThjIiwidXNlcl9pZCI6NX0.DhXS_hsDsGtoZszbCxp285-RyesU2lRxhMi5HPsyETk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action\": \"approve\",\n  \"status\": \"rejected\",\n  \"cleaning_ready_at\": \"2025-07-03T18:15:22Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 Обновить бронь Ожидает подтверждения",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAxODY0LCJpYXQiOjE3NDg4MTU0NjQsImp0aSI6IjA3NWM5ZjExMGVhNjQ2YTI4YTM5MGUyMDM0NDBmOThjIiwidXNlcl9pZCI6NX0.DhXS_hsDsGtoZszbCxp285-RyesU2lRxhMi5HPsyETk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action\": \"approve\",\n  \"status\": \"rejected\",\n  \"cleaning_ready_at\": \"2025-07-03T18:15:22Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 Обновить бронь Отменено",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAxODY0LCJpYXQiOjE3NDg4MTU0NjQsImp0aSI6IjA3NWM5ZjExMGVhNjQ2YTI4YTM5MGUyMDM0NDBmOThjIiwidXNlcl9pZCI6NX0.DhXS_hsDsGtoZszbCxp285-RyesU2lRxhMi5HPsyETk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"cancelled\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 Обновить бронь Подтверждение manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4OTAyNDQ3LCJpYXQiOjE3NDg4MTYwNDcsImp0aSI6IjRkMDgxMzA1MGVhYzQzN2I5NzgyNmZjNjIxYTdkZDI1IiwidXNlcl9pZCI6N30.PNiB7nOJlXMfCeFy3u1Wb5dGL5HSmFukQx05Keu34mc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action\": \"approve\",\n  \"cleaning_ready_at\": \"2025-07-03T18:15:22Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reserve/:id/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reserve",
+						":id",
+						""
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

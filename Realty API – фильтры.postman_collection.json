@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "8899b7ff-fe7f-49ec-9d87-23af4c3732c9",
+		"name": "Realty API – фильтры",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "642563"
+	},
+	"item": [
+		{
+			"name": "01 – Получить все дома с WiFi (id=1) и грилем (id=4)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/realty/?attributes=1,4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"realty",
+						""
+					],
+					"query": [
+						{
+							"key": "attributes",
+							"value": "1,4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 – Дома ближе 1 км к морю, до 3 км к центру, цена до 1000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/realty/?distance_to_sea=1&distance_to_center=3&price_max=1000",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"realty",
+						""
+					],
+					"query": [
+						{
+							"key": "distance_to_sea",
+							"value": "1"
+						},
+						{
+							"key": "distance_to_center",
+							"value": "3"
+						},
+						{
+							"key": "price_max",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 – Поиск по заголовку (пример: вилла)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/realty/?title=Вилла",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"realty",
+						""
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Вилла"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 – Найти 2-комн, 4 сп. мест, цена от 500 до 1500",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/realty/?rooms=2&beds=4&price_min=500&price_max=1500",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"realty",
+						""
+					],
+					"query": [
+						{
+							"key": "rooms",
+							"value": "2"
+						},
+						{
+							"key": "beds",
+							"value": "4"
+						},
+						{
+							"key": "price_min",
+							"value": "500"
+						},
+						{
+							"key": "price_max",
+							"value": "1500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 – Сортировка по цене убыванию",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/realty/?ordering=-price",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"realty",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "-price"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
