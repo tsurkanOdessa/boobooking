@@ -49,11 +49,6 @@ class BookingViewSet(viewsets.ModelViewSet):
             return Response({"error": "Превышено максимальное количество гостей."},
                             status=status.HTTP_400_BAD_REQUEST)
 
-
-        if home.owner == request.user:
-            price = 0
-
-
         temp_booking = Booking(
             home=home,
             date_from=date_from,
@@ -65,8 +60,11 @@ class BookingViewSet(viewsets.ModelViewSet):
         except serializers.ValidationError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-        days = (date_to - date_from).days
-        price = days * home.price
+        if home.owner == request.user:
+            price = 0
+        else:
+            days = (date_to - date_from).days
+            price = days * home.price
 
 
         if 'price' in request.data and home.owner == request.user:
