@@ -47,9 +47,10 @@ class ManagerCreateSerializer(serializers.ModelSerializer):
         return user
 
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
-        fields = ['id', 'email', 'role', 'is_active']
+        fields = ['id', 'email', 'first_name', 'last_name', 'role', 'is_active']
 
 class PasswordResetSerializer(serializers.Serializer):
     email = serializers.EmailField()

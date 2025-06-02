@@ -7,6 +7,7 @@ from rest_framework import permissions, viewsets, filters
 from rest_framework.response import Response
 
 from .models import RentHome, Attribute, Address
+from .pagination import CustomPagination
 from .serializers import RentHomeSerializer, AttributeSerializer, AddressSerializer
 from .permissions import IsOwner, IsOwnerOrManager, IsAdminOrManager
 
@@ -54,7 +55,7 @@ class RentHomeViewSet(viewsets.ModelViewSet):
     queryset = RentHome.objects.all()
     serializer_class = RentHomeSerializer
     permission_classes = [IsOwnerOrManager]
-    pagination_class = PageNumberPagination
+    pagination_class = CustomPagination
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     filterset_class = RentHomeFilter

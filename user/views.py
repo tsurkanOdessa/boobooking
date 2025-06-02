@@ -1,4 +1,11 @@
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status, permissions
+from rest_framework.generics import ListAPIView, UpdateAPIView
+from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.permissions import IsAdminUser
 
 from .serializers import (
     RegisterSerializer,
@@ -7,13 +14,6 @@ from .serializers import (
     PasswordResetConfirmSerializer,
     ChangePasswordSerializer, ManagerCreateSerializer, CustomTokenObtainPairSerializer)
 from .models import User
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status, permissions
-from rest_framework.generics import ListAPIView, UpdateAPIView
-from rest_framework.permissions import IsAuthenticated, BasePermission
-from rest_framework.permissions import IsAdminUser
 
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
@@ -160,3 +160,11 @@ class ChangePasswordView(APIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+
+class UserProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user

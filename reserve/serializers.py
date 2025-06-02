@@ -28,8 +28,9 @@ class BookingSerializer(serializers.ModelSerializer):
         if (date_to - date_from).days < 1:
             raise serializers.ValidationError("Минимальный срок бронирования - 1 день.")
 
-        if guests > home.guests:
-            raise serializers.ValidationError("Слишком много гостей для этого жилья.")
+        if home.guests > 0 and guests > 0:
+            if guests > home.guests:
+                raise serializers.ValidationError("Слишком много гостей для этого жилья.")
 
 
         if not home.is_active and (not user or home.owner != user):
