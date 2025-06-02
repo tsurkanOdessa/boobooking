@@ -1,5 +1,7 @@
+from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet, NumberFilter, CharFilter
 from rest_framework.generics import CreateAPIView
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions, viewsets, filters
 from rest_framework.response import Response
@@ -52,6 +54,7 @@ class RentHomeViewSet(viewsets.ModelViewSet):
     queryset = RentHome.objects.all()
     serializer_class = RentHomeSerializer
     permission_classes = [IsOwnerOrManager]
+    pagination_class = PageNumberPagination
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     filterset_class = RentHomeFilter
@@ -69,13 +72,20 @@ class RentHomeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        if user.is_authenticated:
 
-            if  user.groups.exclude(name='Owner'):
+        if not user.is_authenticated:
 
-                return RentHome.objects.all()
+            return RentHome.objects.filter(is_active=True)
 
-            return RentHome.objects.filter(owner=user)
+        if IsAdminOrManager().has_permission(self.request, self):
+
+            return RentHome.objects.all()
+
+        if IsOwner().has_permission(self.request, self):
+
+            return RentHome.objects.filter(
+                Q(is_active=True) | Q(owner=user)
+            )
 
         return RentHome.objects.filter(is_active=True)
 
