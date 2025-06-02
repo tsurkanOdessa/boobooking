@@ -2,9 +2,6 @@ from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import serializers
-from django.utils import timezone
-
-from realty.permissions import IsAdminOrManager
 from .models.booking import Booking
 from .models.status import BookingStatus
 from .serializers import BookingSerializer
