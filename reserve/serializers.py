@@ -1,11 +1,13 @@
 from rest_framework import serializers
 from django.utils import timezone
+
+from user.serializers import UserSerializer
 from .models.status import BookingStatus
 from .models.booking import Booking
 
 class BookingSerializer(serializers.ModelSerializer):
     price = serializers.DecimalField(max_digits=10, decimal_places=2, coerce_to_string=False)
-
+    renter = UserSerializer(read_only=True)
     class Meta:
         model = Booking
         fields = '__all__'

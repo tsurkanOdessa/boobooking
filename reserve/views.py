@@ -78,6 +78,14 @@ class BookingViewSet(viewsets.ModelViewSet):
         booking = self.get_object()
         user = request.user
 
+        if 'status' in request.data and request.data['status'] == 'cancelled':
+            if user == booking.renter:
+                booking.status = BookingStatus.CANCELLED
+                booking.save()
+                return Response(BookingSerializer(booking).data)
+            else:
+                return Response({"error": "Только арендатор может отменить бронирование"},
+                                status=status.HTTP_403_FORBIDDEN)
         if not (user == booking.home.owner or user.is_superuser or user.role in ['Admin', 'Manager']):
             return Response({"error": "Доступ запрещен"}, status=status.HTTP_403_FORBIDDEN)
 
