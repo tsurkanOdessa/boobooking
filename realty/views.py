@@ -49,6 +49,7 @@ class RentHomeFilter(FilterSet):
             'rooms', 'beds',
             'title',
             'attributes',
+            'type'
         ]
 
 class RentHomeViewSet(viewsets.ModelViewSet):

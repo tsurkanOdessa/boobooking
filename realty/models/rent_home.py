@@ -5,6 +5,13 @@ from .attributes import Attribute
 from .address import Address
 
 class RentHome(models.Model):
+    TYPE_CHOICES = (
+        ('Hause', 'Hause'),
+        ('Villa', 'Villa'),
+        ('Figvam', 'Figvam'),
+        ('Other', 'Other'),
+    )
+
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -12,6 +19,7 @@ class RentHome(models.Model):
     )
     title = models.CharField(max_length=255)
     description = models.TextField()
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     address = models.ForeignKey(Address, null=True, blank=True, on_delete=models.SET_NULL)
     rooms = models.PositiveIntegerField(
     validators=[MinValueValidator(1), MaxValueValidator(99)],
