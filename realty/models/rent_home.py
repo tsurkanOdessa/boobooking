@@ -8,7 +8,7 @@ class RentHome(models.Model):
     TYPE_CHOICES = (
         ('Hause', 'Hause'),
         ('Villa', 'Villa'),
-        ('Figvam', 'Figvam'),
+        ('Apartment', 'Apartment'),
         ('Other', 'Other'),
     )
 
@@ -19,7 +19,11 @@ class RentHome(models.Model):
     )
     title = models.CharField(max_length=255)
     description = models.TextField()
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES)
+    type = models.CharField(
+        max_length=20,
+        choices=TYPE_CHOICES,
+        default='Apartment'
+    )
     address = models.ForeignKey(Address, null=True, blank=True, on_delete=models.SET_NULL)
     rooms = models.PositiveIntegerField(
     validators=[MinValueValidator(1), MaxValueValidator(99)],
@@ -31,7 +35,7 @@ class RentHome(models.Model):
     )
     guests = models.PositiveIntegerField(
     default=0,
-    validators=[MinValueValidator(1), MaxValueValidator(99)],
+    validators=[MinValueValidator(0), MaxValueValidator(99)],
     help_text="Количество гостей (1-99)"
     )
     area = models.FloatField(help_text="Площадь в квадратных метрах")
