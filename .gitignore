@@ -31,3 +31,4 @@ local_settings.py
 **/migrations/*.py
 **/migrations/*.pyc
 !*/migrations/__init__.py
+.env
