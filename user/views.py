@@ -30,6 +30,10 @@ class IsAdminUserCustom(BasePermission):
     def has_permission(self, request, view):
         return request.user.is_authenticated and request.user.role == 'Admin'
 
+class IsManagerUserCustom(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.role == 'Manager'
+
 class RegisterView(APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -70,7 +74,7 @@ class UserListView(ListAPIView):
 class ConfirmUserView(UpdateAPIView):
     queryset = User.objects.filter(role='Owner', is_active=False)
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, IsAdminUserCustom]
+    permission_classes = [IsAuthenticated, IsAdminUserCustom, IsManagerUserCustom]
 
     def patch(self, request, *args, **kwargs):
         user_id = self.kwargs.get('pk')
