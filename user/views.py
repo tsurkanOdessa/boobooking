@@ -19,6 +19,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
+from .signals import user_registered
 
 import logging
 
@@ -37,14 +38,14 @@ class RegisterView(APIView):
 
         if serializer.is_valid():
             user = serializer.save()
-            user.is_active = False  # Отключаем аккаунт до активации
+            user.is_active = False
             user.save()
 
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            token = default_token_generator.make_token(user)
-            activation_link = f"http://localhost:8000/api/user/activate/?uid={uid}&token={token}"
-
-            logger.info(f"Ссылка активации для {user.email}: {activation_link}")
+            #uid = urlsafe_base64_encode(force_bytes(user.pk))
+            #token = default_token_generator.make_token(user)
+            #activation_link = f"http://localhost:8000/api/user/activate/?uid={uid}&token={token}"
+            #logger.info(f"Ссылка активации для {user.email}: {activation_link}")
+            user_registered.send(sender=self.__class__, user=user)
 
             return Response({'message': 'Пользователь зарегистрирован. Ссылка активации записана в лог.'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
