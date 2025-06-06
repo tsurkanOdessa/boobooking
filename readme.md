@@ -138,4 +138,12 @@
 
 ---
 
+ssh -i /home/set/Downloads/key.pem  ec2-54-234-113-144.compute-1.amazonaws.com
+mkdir project
+chmod 400 project
 
+sudo yum update -y
+sudo yum install python3 -y
+sudo yum install python3-pip -y
+
+scp -i /home/set/Downloads/key.pem -r /home/set/PycharmProjects/booking_backend ec2-user@54.234.113.144:~/project/
